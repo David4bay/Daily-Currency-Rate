@@ -1,0 +1,61 @@
+{
+    "name": "Currency Rate Tracker",
+    "short_name": "Rate Tracker",
+    "start_url": "/index.html",
+    "scrope": "/",
+    "display": "standalone",
+    "background_color": "#DEB887",
+    "theme_color": "#8AAAAA",
+    "description": "Find the current exchange rates",
+    "dir": "ltr",
+    "lang": "en-NG",
+    "orientation": "portrait-primary",
+    "id": "/index.html",
+    "icons": [
+        {
+            "src": "src/images/icons/dollar-3-48x48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "src/images/icons/dollar-3-57x57.png",
+            "type": "image/png",
+            "sizes": "57x57"
+        },
+        {
+            "src": "src/images/icons/dollar-3-60x60.png",
+            "type": "image/png",
+            "sizes": "60x60"
+        },
+        {
+            "src": "src/images/icons/dollar-3-72x72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "src/images/icons/dollar-3-96x96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "src/images/icons/dollar-3-120x120.png",
+            "type": "image/png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "src/images/icons/dollar-3-144x144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "src/images/icons/dollar-3-152x152.png",
+            "type": "image/png",
+            "sizes": "152x152"
+        },
+        {
+            "src": "src/images/icons/dollar-3-180x180.png",
+            "type": "image/png",
+            "sizes": "180x180"
+        }
+    ]
+}
