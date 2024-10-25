@@ -58,11 +58,17 @@ body {
     color: black;
 }
 
-.navmenu__options {
-    display: flex;
+li {
+    list-style: none;
 }
 
 .home {
+    display: flex;
+    align-items: center;
+}
+
+.logo__container {
+
     width: 50px;
 }
 
