@@ -1,3 +1,6 @@
+
+let dummyServer = `http://localhost:3001/currency-info`
+
 const appDownloadIcon = document.getElementById("downloadApplication")
 let platform 
 
@@ -18,3 +21,9 @@ function openInstallAppModal() {
         })
     }
 }
+
+fetch(dummyServer).then(function(res) {
+    return res.json()
+}).then(function(data) {
+    console.log("fetched data from /src/js/app.js", data)
+})
