@@ -47,6 +47,7 @@
 :root {
     --exclaim: #e2be5c;
     --custom-blue: #3f46afb9;
+    --custom-blue-emphasis: #3f46af;
     --plain: #ffffff;
     --text: #000;
     --theme-color2: #cfaf58;
@@ -112,6 +113,8 @@ nav {
     border: 1px solid var(--custom-blue);
     background-color: var(--custom-blue);
     text-shadow: 0px 4px 0px var(--custom-blue);
+    border-bottom: 6px solid var(--custom-blue-emphasis);
+    padding: 0px 5px;
 }
 
 .highlighted {
@@ -171,14 +174,12 @@ nav {
 }
 
 .download__container {
-    display: none;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     left: 15px;
-    bottom: 15px;
+    bottom: -15px;
     position: relative;
-    
 }
 
 .download {
@@ -214,6 +215,9 @@ nav {
     /* width: 350px; */
 }
 
+.main__content {
+    min-height: 100vh;
+}
 
 /* 
 @keyframes animatedNavShadow {

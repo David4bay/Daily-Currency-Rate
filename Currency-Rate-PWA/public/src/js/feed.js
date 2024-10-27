@@ -1,12 +1,20 @@
 const appDownloadIcon = document.getElementById("downloadApplication")
-
-if (deferredPrompt) {
-    console.log("display download button", appDownloadIcon.style.display)
-    appDownloadIcon.style.display = "block"
-}
+let platform 
 
 appDownloadIcon.addEventListener("click", openInstallAppModal)
 
 function openInstallAppModal() {
-
+    console.log("boop! beep! app install button clicked!")
+    if (deferredPrompt) {
+        deferredPrompt.prompt()
+        deferredPrompt.userChoice.then(function(choiceResult) {
+            console.log("user choice", choiceResult.outcome)
+            if (choiceResult.outcome === "dismissed") {
+                console.log("User cancelled app installation")
+            } else {
+                console.log("User added app to homescreen")
+            }
+            deferredPrompt = null
+        })
+    }
 }
