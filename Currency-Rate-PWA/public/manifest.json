@@ -3,14 +3,29 @@
     "short_name": "Rate Tracker",
     "start_url": "/index.html",
     "scrope": "/",
+    "display_override": ["fullscreen", "minimal-ui"],
     "display": "standalone",
-    "background_color": "#DEB887",
-    "theme_color": "#8AAAAA",
-    "description": "Find the current exchange rates",
+    "background_color": "#2530c5e3",
+    "theme_color": "#2530c5e3",
+    "description": "Find the current exchange rates.",
     "dir": "ltr",
     "lang": "en-NG",
     "orientation": "portrait-primary",
     "id": "/index.html",
+    "categories": [
+        "education",
+        "productivity"
+    ],
+    "screenshots": [
+        {
+         "src": "src/images/icons/dollar-3-320x320.png",
+          "sizes": "320x320",
+          "type": "image/png",
+          "form_factor": "wide",
+          "label": "Currency Rate Tracker"
+        }
+    ],
+    "prefer_related_applications": false,
     "icons": [
         {
             "src": "src/images/icons/dollar-3-48x48.png",

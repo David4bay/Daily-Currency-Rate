@@ -1,3 +1,5 @@
+// importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
 console.log("in service worker")
 
 self.addEventListener("install", function(event) {
