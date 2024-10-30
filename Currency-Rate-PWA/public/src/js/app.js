@@ -4,7 +4,7 @@ var deferredPrompt
 
     if ("serviceWorker" in navigator) {
         console.log("yup")
-        navigator.serviceWorker.register("/src/js/sw.js").then(function() {
+        navigator.serviceWorker.register("./sw.js", { scope: "/" }).then(function() {
             console.log("Service Worker registered!")
         })
     }

@@ -2,7 +2,7 @@
     "name": "Currency Rate Tracker",
     "short_name": "Rate Tracker",
     "start_url": "/index.html",
-    "scrope": "/",
+    "scope": "/",
     "display_override": ["fullscreen", "minimal-ui"],
     "display": "standalone",
     "background_color": "#2530c5e3",
@@ -22,6 +22,12 @@
           "sizes": "320x320",
           "type": "image/png",
           "form_factor": "wide",
+          "label": "Currency Rate Tracker"
+        },
+        {
+         "src": "src/images/icons/dollar-3-320x320.png",
+          "sizes": "320x320",
+          "type": "image/png",
           "label": "Currency Rate Tracker"
         }
     ],

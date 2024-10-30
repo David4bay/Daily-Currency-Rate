@@ -1,8 +1,8 @@
 
-let dummyServer = `http://localhost:3001/currency-info`
+var dummyServer = `http://localhost:3001/currency-info`
 
-const appDownloadIcon = document.getElementById("downloadApplication")
-let platform 
+var appDownloadIcon = document.getElementById("downloadApplication")
+var platform 
 
 appDownloadIcon.addEventListener("click", openInstallAppModal)
 
