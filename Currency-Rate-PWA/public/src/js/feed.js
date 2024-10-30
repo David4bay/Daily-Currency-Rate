@@ -9,6 +9,8 @@ appDownloadIcon.addEventListener("click", openInstallAppModal)
 function openInstallAppModal() {
     console.log("boop! beep! app install button clicked!")
     if (deferredPrompt) {
+        console.log("deferredPrompt", deferredPrompt)
+        platform = deferredPrompt.platforms
         deferredPrompt.prompt()
         deferredPrompt.userChoice.then(function(choiceResult) {
             console.log("user choice", choiceResult.outcome)
@@ -16,6 +18,7 @@ function openInstallAppModal() {
                 console.log("User cancelled app installation")
             } else {
                 console.log("User added app to homescreen")
+                appDownloadIcon.remove()
             }
             deferredPrompt = null
         })
