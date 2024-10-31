@@ -2,46 +2,13 @@
 @font-face {
     font-family: 'Monterrat';
     src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf')  format('truetype');
-    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf')  format('truetype'),
-         url('../fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf')  format('truetype')
-         url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-ThinItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Thin.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-SemiBoldItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-SemiBold.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Regular.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-MediumItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-LightItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Light.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Light.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Italic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-ExtraLightItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-ExtraLight.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-ExtraBoldItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-ExtraBold.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-BoldItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-BoldItalic.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Bold.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-Black.ttf')  format('truetype')
-         url('../fonts/Montserrat/static/Montserrat-BlackItalic.ttf')  format('truetype');
+    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf')  format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto/Roboto-ThinItalic.ttf')  format('truetype');
-    src: url('../fonts/Roboto/Roboto-Black.ttf')  format('truetype'),
-    url('../fonts/Roboto/Roboto-BlackItalic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Bold.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-BoldItalic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Italic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Light.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-LightItalic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Medium.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-MediumItalic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Medium.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-MediumItalic.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-Thin.ttf')  format('truetype')
-    url('../fonts/Roboto/Roboto-ThinItalic.ttf')  format('truetype');
+    src: url('../fonts/Roboto/Roboto-Black.ttf')  format('truetype');
 }
 
 :root {

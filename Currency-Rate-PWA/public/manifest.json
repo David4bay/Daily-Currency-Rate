@@ -21,13 +21,6 @@
          "src": "src/images/icons/dollar-3-320x320.png",
           "sizes": "320x320",
           "type": "image/png",
-          "form_factor": "wide",
-          "label": "Currency Rate Tracker"
-        },
-        {
-         "src": "src/images/icons/dollar-3-320x320.png",
-          "sizes": "320x320",
-          "type": "image/png",
           "label": "Currency Rate Tracker"
         }
     ],

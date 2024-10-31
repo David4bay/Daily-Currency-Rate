@@ -1,5 +1,5 @@
-var STATIC_CACHE = "STATIC_CACHE_38"
-var DYNAMIC_CACHE = "DYNAMIC_CACHE_29"
+var STATIC_CACHE = "STATIC_CACHE_43"
+var DYNAMIC_CACHE = "DYNAMIC_CACHE_34"
 
 console.log("in service worker")
 
@@ -10,14 +10,8 @@ self.addEventListener("install", function(event) {
         console.log("[Service Worker] Precaching App Shell"); 
            const urlsToCache = [
             "/",
+            "/offline.html",
             "/index.html",
-            "/src",
-            "/src/css",
-            "/src/fonts",
-            "/src/fonts/Montserrat",
-            "/src/fonts/Roboto",
-            "/src/images/icons",
-            "/src/js",
             "/src/js/app.js",
             "/src/js/fetch.js",
             "/src/js/feed.js",
@@ -83,6 +77,17 @@ self.addEventListener("install", function(event) {
 
 self.addEventListener("activate", function(event) {
     console.log("[Service Worker Activating Service Worker ...", event)
+    event.waitUntil(
+        caches.keys()
+        .then(function(keyList) {
+            return Promise.all(keyList.map(function(key) {
+                if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE) {
+                    console.log("[Service Worker] Removing old cache.", key)
+                    return caches.delete(key)
+                }
+            }))
+        })
+    )
     return self.clients.claim()
 })
 
