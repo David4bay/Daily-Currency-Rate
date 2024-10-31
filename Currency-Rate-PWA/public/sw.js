@@ -1,5 +1,5 @@
-var STATIC_CACHE = "STATIC_CACHE_43"
-var DYNAMIC_CACHE = "DYNAMIC_CACHE_34"
+var STATIC_CACHE = "STATIC_CACHE_45"
+var DYNAMIC_CACHE = "DYNAMIC_CACHE_36"
 
 console.log("in service worker")
 
@@ -28,39 +28,9 @@ self.addEventListener("install", function(event) {
             "/src/images/icons/dollar-3-144x144.png",
             "/src/images/icons/dollar-3-152x152.png",
             "/src/images/icons/dollar-3-180x180.png",
-            "/src/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf",
-            "/src/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
             "/src/fonts/Montserrat/static/Montserrat-Medium.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-ThinItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Thin.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-SemiBoldItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-SemiBold.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Regular.ttf",
             "/src/fonts/Montserrat/static/Montserrat-MediumItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-LightItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Light.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Italic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-ExtraLightItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-ExtraLight.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-ExtraBoldItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-ExtraBold.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-BoldItalic.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Bold.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-Black.ttf",
-            "/src/fonts/Montserrat/static/Montserrat-BlackItalic.ttf",
-            "/src/fonts/Roboto/Roboto-ThinItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Black.ttf",
-            "/src/fonts/Roboto/Roboto-BlackItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Bold.ttf",
-            "/src/fonts/Roboto/Roboto-BoldItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Italic.ttf",
-            "/src/fonts/Roboto/Roboto-Light.ttf",
-            "/src/fonts/Roboto/Roboto-LightItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Medium.ttf",
-            "/src/fonts/Roboto/Roboto-MediumItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Medium.ttf",
-            "/src/fonts/Roboto/Roboto-MediumItalic.ttf",
-            "/src/fonts/Roboto/Roboto-Thin.ttf",
+            "/src/fonts/Roboto/Roboto-Black.ttf ",
             "/src/fonts/Roboto/Roboto-ThinItalic.ttf",
         ]
           for (const url of urlsToCache) {
