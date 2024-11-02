@@ -1,7 +1,407 @@
 {
-    "currency-info": [
-        {
-            "USD/NGN": 1770
-        }
+    "data": [
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "EUR",
+            "mid": 0.91885,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:04:06.176Z"
+          }
+        },
+        "currencySymbol": "EUR"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "AFN",
+            "mid": 66.8628,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "AFN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "AOA",
+            "mid": 916.145,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "AOA"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "ARS",
+            "mid": 990.188,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "ARS"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "AZN",
+            "mid": 1.69875,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "AZN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "BAM",
+            "mid": 1.79705,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "BAM"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "BGN",
+            "mid": 1.79715,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "BGN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "BOB",
+            "mid": 6.9225,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "BOB"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "BRL",
+            "mid": 5.7908,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "BRL"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "MMK",
+            "mid": 2101.15,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "MMK"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "BYN",
+            "mid": 3.26986,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "BYN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "RSD",
+            "mid": 107.515,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "RSD"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "CZK",
+            "mid": 23.2596,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "CZK"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "CUP",
+            "mid": 23.9731,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "CUP"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "GNF",
+            "mid": 8619.37,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "GNF"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "XOF",
+            "mid": 602.633,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "XOF"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "ILS",
+            "mid": 3.7409,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "ILS"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "LAK",
+            "mid": 21946.3,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "LAK"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "MGA",
+            "mid": 4614.71,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "MGA"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "RON",
+            "mid": 4.57035,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "RON"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "SDG",
+            "mid": 601.449,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "SDG"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "KGS",
+            "mid": 84.8943,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "KGS"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "MDL",
+            "mid": 17.9125,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "MDL"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "TMT",
+            "mid": 3.5,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "TMT"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "UAH",
+            "mid": 41.05,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:21:19.040Z"
+          }
+        },
+        "currencySymbol": "UAH"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "AZN",
+            "mid": 1.69875,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:01:03.780Z"
+          }
+        },
+        "currencySymbol": "AZN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "CZK",
+            "mid": 23.2596,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "CZK"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "MGA",
+            "mid": 4614.71,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "MGA"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "NGN",
+            "mid": 1715.32,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:47:40.688Z"
+          }
+        },
+        "currencySymbol": "NGN"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "RON",
+            "mid": 4.57035,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "RON"
+      },
+      {
+        "data": {
+          "status_code": 200,
+          "data": {
+            "base": "USD",
+            "target": "STN",
+            "mid": 22.6577,
+            "unit": 1,
+            "timestamp": "2024-11-01T00:45:38.861Z"
+          }
+        },
+        "currencySymbol": "STN"
+      }
     ]
-}
+  }
