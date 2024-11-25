@@ -1,55 +1,75 @@
-const currencySymbols = require("../data/currencySymbols")
-const fs = require("fs")
-const path = require("path")
 const axios = require("axios")
+const store = require("../store/store")
+const buildCurrencyList = require("../utils/buildCurrencyList")
 const currencyRouter = require("express").Router()
+const currencyNameAndSymbols = require("../data/currencyList")
 
 currencyRouter.get("/fetch", async function(request, response) {
-    let defaultCurrency = request.query.default || "USD"
-    let formattedCurrencySymbols = currencySymbols.filter((currencySymbol) => currencySymbol !== defaultCurrency)
-    
-    console.log("formattedCurrencySymbols", formattedCurrencySymbols)
-
-    let url = process.env.CURRENCY_API
+    let defaultCurrency = request.body.defaultCurrency || "USD"
+    let convertToCurrency = request.body.convertToCurrency || "NGN"
 
     try {
-        const responseData = await Promise.all(
-            formattedCurrencySymbols.map((currencySymbol) => {
-                return axios.get(`${url}/rates/latest/${defaultCurrency}?target=${currencySymbol}`)
-                    .then(res => ({ data: res.data, currencySymbol }))
-                    .catch(error => {
-                        console.error(`Failed for ${currencySymbol}: ${error.message}`)
-                        return null
-                    })
-            })
-        )
 
-        const successfulResponses = responseData.filter(result => result !== null)
+        let rate = await axios.get(`${store.CURRENCY_API}${defaultCurrency}-${convertToCurrency}`)
+        const currencyPayload = rate.data
 
-        if (successfulResponses.length > 0) {
-            response.status(200).json({ data: successfulResponses })
-        } else {
-            response.status(422).json({ error: "All requests failed or had issues." })
-        }
+        response.status(200).json(currencyPayload)
         return
     } catch (error) {
-        response.status(400).json({
-            error: `Server error encountered. ${error.message}`
+        response.statusCode = 400
+        response.json({
+            error: "Bad request."
         })
         return
     }
 })
 
 
-currencyRouter.get("/currency", async function(request, response) {
+currencyRouter.get("/currencies", async function(request, response) {
+    let defaultCurrency = request.body.defaultCurrency || "USD"
+    let currencySymbols = currencyNameAndSymbols.currencySymbols.filter((currencySymbol) => currencySymbol !== defaultCurrency)
+    let currencyFetchInfo = buildCurrencyList(defaultCurrency, currencySymbols)
+    try {
 
-    const convertFromCurrency = request.query.from 
-    const convertToCurrency = request.query.to 
-
-    if (!convertFromCurrency || !convertToCurrency) {
-        response.status(400).json({
-            error: `${!convertFromCurrency ? "currency to convert from" : !convertToCurrency ? "currency to converted into" : null} not provided.`
+    return await axios.get(`${store.CURRENCIES_API}/${currencyFetchInfo}`).then((currencyPayloadInfo) => {
+        let currencyPayload = currencyPayloadInfo.data
+        response.status(200).json(currencyPayload)
+        return
+    })
+    }  catch (error) {
+        response.statusCode = 400
+        response.json({
+            error: `Unable to retrieve currencyData. ${error}`
         })
+        return
+    }
+})
+
+currencyRouter.get("/graph", async function(request, response) {
+
+    const defaultCurrency = request.query.default || "USD"
+    const compareToCurrency = request.query.lookup || "NGN"
+    const numberOfDays = request.query.numberOfDays
+
+    if (!defaultCurrency || !compareToCurrency || !numberOfDays) {
+        response.status(400).json({ error: `Value(s) ommitted.`})
+        return
+    }
+
+    console.log("defaultCurrency", defaultCurrency, "compareToCurrency", compareToCurrency)
+    
+    try {
+        let currencyPayload = await axios.get(`${store.CURRENCIES_CHART_API}/${defaultCurrency}-${compareToCurrency}/${numberOfDays}`)
+        let currencyGraphList = currencyPayload.data.map((currencyData) => { return { pctChange: currencyData.pctChange, timestamp: currencyData.timestamp } })
+        
+        response.status(200).json(currencyGraphList)
+        return
+    } catch (error) {
+        response.statusCode = 404
+        response.json({
+            error: `Unable to fetch currency data list. ${error}`
+        })
+        return
     }
 })
 

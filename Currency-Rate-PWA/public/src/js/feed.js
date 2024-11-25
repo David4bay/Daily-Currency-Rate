@@ -1,5 +1,6 @@
 
-var dummyServer = `http://localhost:3001/data`
+var dummyServer = `http://localhost:3001/api/v1/currencies`
+var data
 
 var appDownloadIcon = document.getElementById("downloadApplication")
 var carousel = document.querySelector(".carousel")
@@ -31,24 +32,32 @@ function openInstallAppModal() {
 fetch(dummyServer).then(function(response) {
     return response.json()
 }).then(function(fetchResponse) {
-    articleIntro.textContent += fetchResponse[0].data.data.base
-    console.log("fetched data from /src/js/app.js", fetchResponse)
+    let reformattedCurrency = Object.keys(fetchResponse)
+    let articleBaseCurrency = reformattedCurrency[0].code
+    let carouselCurrencyData = Object.values(fetchResponse)
+    let exchangeRateCurrencyData = Object.values(fetchResponse)
+    console.log("articleBaseCurrency", articleBaseCurrency, "reformattedCurrency", reformattedCurrency)
+    data = Array.from(exchangeRateCurrencyData)
+    console.log("articleBaseCurrency", articleBaseCurrency)
+    articleIntro.textContent += `${articleBaseCurrency}`
 
-    createCarouselOnHomepage(fetchResponse)
-    createExchangeRateTable(fetchResponse)
+    if (reformattedCurrency.length > 1 && exchangeRateCurrencyData.length > 1) {
+        createCarouselOnHomepage(carouselCurrencyData)
+        createExchangeRateTable(exchangeRateCurrencyData)
+    }
 })
 
 function createCarouselOnHomepage(currencyPayload) {
 
     currencyPayload.forEach((currencyData) => {
-        let currencySymbol = currencyData.currencySymbol 
-        let baseCurrencySymbol = currencyData.data.data.base 
-        let currencyExchangeRate = currencyData.data.data.mid.toFixed(2)
+        let currencySymbol = currencyData.codein 
+        let baseCurrencySymbol = currencyData.code
+
         // let timestamp = currencyData.data.data.timestamp
 
         let carouselElement = document.createElement("span")
-        carouselElement.innerText = `${baseCurrencySymbol}/${currencySymbol}: ${currencyExchangeRate}`
-        carouselElement.title = ` ${baseCurrencySymbol}/${currencySymbol}: ${currencyExchangeRate}`
+        carouselElement.innerHTML = `<span>${baseCurrencySymbol}/${currencySymbol}: <svg class="upTick" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#36f756"><path d="m280-400 200-200 200 200H280Z"/></svg> ${currencyData.high} | <svg class="downTick" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M480-360 280-560h400L480-360Z"/></svg> ${currencyData.low}<span>`
+        carouselElement.title = ` ${baseCurrencySymbol}/${currencySymbol} hi ${currencyData.high} | lo  ${currencyData.low}`
         carouselElement.className = "carousel-item"
         carousel.appendChild(carouselElement)
     })
@@ -65,7 +74,7 @@ function setSpeed(duration) {
     carousel.style.animationDuration = `${duration}s`
 }
 
-setSpeed(20)
+setSpeed(120)
 cloneItems()
 }
 
@@ -73,11 +82,10 @@ function createExchangeRateTable(currencyPayload) {
 
     currencyPayload.forEach(function(currencyData, indexOfCurrencyData) {
         
-        if (indexOfCurrencyData < 5) {
-            
-            let currencySymbol = currencyData.currencySymbol 
-            let baseCurrencySymbol = currencyData.data.data.base 
-            let currencyExchangeRate = currencyData.data.data.mid.toFixed(2)
+        if (indexOfCurrencyData < 15) {
+
+            let currencySymbol = currencyData.codein
+            let baseCurrencySymbol = currencyData.code
     
             let tableRow = document.createElement("tr")
             let currencySymbolTableData = document.createElement("td")
@@ -88,13 +96,13 @@ function createExchangeRateTable(currencyPayload) {
             currencyExchangeRateData.className = "currencyData"
     
             currencySymbolTableData.innerText = `${baseCurrencySymbol}/${currencySymbol}`
-            currencyExchangeRateData.innerText = `${currencyExchangeRate}`
+            currencyExchangeRateData.innerText = `${currencyData.bid}`
     
             tableRow.appendChild(currencySymbolTableData)
             tableRow.appendChild(currencyExchangeRateData)
     
     
-            if (indexOfCurrencyData === 4) {
+            if (indexOfCurrencyData === 14) {
                 let borderStyle = getComputedStyle(document.documentElement).getPropertyValue("--text")
                 console.log("borderStyle", borderStyle)
                 tableRow.style.borderBottom = `1px solid ${borderStyle}`

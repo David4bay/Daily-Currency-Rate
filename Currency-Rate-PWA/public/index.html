@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="icon" href="/src/images/icons/dollar-3-96.ico">
+    <!-- Metadata for different browsers and devices -->
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-48x48.png">
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-57x57.png">
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-60x60.png">
@@ -15,6 +16,7 @@
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-144x144.png">
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-152x152.png">
     <link rel="apple-touch-icon" href="/src/images/icons/dollar-3-180x180.png">
+    <!-- Enabled mobile web capability -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="msapplication-TileImage" content="/src/images/icons/dollar-3-48x48.png">
     <meta name="msapplication-TileImage" content="/src/images/icons/dollar-3-57x57.png">
@@ -30,8 +32,11 @@
     <link rel="stylesheet" href="/src/css/styles.css" />
     <link rel="manifest" href="/manifest.json" />
     <title>Exchange Rate Tracker</title>
+    <script src="/src/js/highCharts.js"></script>
+    <script src="/src/js/accessibility.js"></script>
 </head>
 <body>
+    <!-- Nav items with logo, nav links -->
     <nav class="navmenu__options">
         <ul class="home">
             <li class="logo__container">
@@ -43,6 +48,7 @@
                 </strong>
             </li>
         </ul>
+        <!-- Nav Links container -->
         <ul class="menu__options">
             <li class="link">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M424-320q0-81 14.5-116.5T500-514q41-36 62.5-62.5T584-637q0-41-27.5-68T480-732q-51 0-77.5 31T365-638l-103-44q21-64 77-111t141-47q105 0 161.5 58.5T698-641q0 50-21.5 85.5T609-475q-49 47-59.5 71.5T539-320H424Zm56 240q-33 0-56.5-23.5T400-160q0-33 23.5-56.5T480-240q33 0 56.5 23.5T560-160q0 33-23.5 56.5T480-80Z"/></svg>
@@ -59,35 +65,48 @@
             <li class="link hidden">Menu</li>
         </ul>
     </nav>
+    <!-- Header Content -->
     <header class="centered__text">
         <div class="intro__text">
             <h1>Get the <strong class="fancyText">latest</strong> exchange rates, signup for daily <span class="animate__text">alerts</span></h1>
         </div>
     </header>
+    <!-- Dynamic Currency Carousel-->
     <aside class="currency__carouselContainer">
         <div class="carousel">
         </div>
     </aside>
+    <!-- Main Content -->
     <main class="main__content">
+        <!-- Currency Rate Dynamic Table Section -->
         <section class="section">
             <article class="article currencyTable__section">
-                <h2 class="article__intro">Todays Rates in </h2>
-                <table class="table__container">
-                    <thead>
-                        <tr class="currencyHeading__container">
-                            <th class="currencyHeading">Currency Symbol</th>
-                            <th class="currencyHeading"> Currency Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody class="currencyTable__content">
-                    </tbody>
-                </table>
+                <!-- Today's Currencies Table -->
+                 <div>
+                     <h2 class="article__intro">Todays Rates in </h2>
+                     <table class="table__container">
+                         <thead>
+                             <tr class="currencyHeading__container">
+                                 <th class="currencyHeading">Currency Symbol</th>
+                                 <th class="currencyHeading"> Currency Rate</th>
+                             </tr>
+                         </thead>
+                         <tbody class="currencyTable__content">
+                         </tbody>
+                     </table>
+                 </div>
+                 <div>
+                     <div id="container" style="height: 400px; width: 700px;">
+                        <p class="highcharts-description">This chart shows the percent changes between USD/NGN for the past 90 days</p>
+                     </div>
+                 </div>
             </article>
         </section>
+        <!-- Features Section -->
         <section class="section">
             <article class="article__content">
                 <h2>Alerts</h2>
-      <p>Set up personalized alerts to track exchange rates and other financial metrics that impact your investments. <a href="alert.html">Learn more</a> about how to configure your daily alerts.</p>
+                <p>Set up personalized alerts to track exchange rates and other financial metrics that impact your investments. <a href="alert.html">Learn more</a> about how to configure your daily alerts.</p>
             </article>
             <article class="article__content">
                 <h2>Features</h2>
@@ -100,6 +119,7 @@
             </article>
         </section>
     </main>
+    <!-- Footer Section -->
     <footer>
         <div>
             <button title="Download App" id="downloadApplication" class="download__container">
@@ -114,7 +134,9 @@
     <script src="/src/js/promise.js"></script>
     <srcipt src="/src/js/fetch.js"></srcipt>
     <script src="/src/js/polyfill.js"></script>
+    <script src="/src/js/idb.js"></script>
     <script src="/src/js/app.js"></script>
     <script src="/src/js/feed.js"></script>
+    <script src="/src/js/homeChart.js"></script>
 </body>
 </html>

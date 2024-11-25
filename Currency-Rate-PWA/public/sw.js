@@ -1,7 +1,8 @@
 
-var STATIC_CACHE = "STATIC_CACHE_108"
-var DYNAMIC_CACHE = "DYNAMIC_CACHE_98"
-var url = `http://localhost:3001/data`
+var arrivedResponse
+var STATIC_CACHE = "STATIC_CACHE_127"
+var DYNAMIC_CACHE = "DYNAMIC_CACHE_117"
+var url = `http://localhost:3001/api/v1/currencies`
 
 var STATIC_FILES = [
     "/",
@@ -11,6 +12,8 @@ var STATIC_FILES = [
     "/src/js/app.js",
     "/src/js/fetch.js",
     "/src/js/feed.js",
+    "/src/js/idb.js",
+    "/src/js/highCharts.js",
     "/src/js/promise.js",
     "/src/js/polyfill.js",
     "/src/css/styles.css",
@@ -18,6 +21,7 @@ var STATIC_FILES = [
     "/src/images/icons/dollar-3-57x57.png",
     "/src/images/icons/dollar-3-60x60.png",
     "/src/images/icons/dollar-3-72x72.png",
+    "/src/images/icons/dollar-3-96.ico",
     "/src/images/icons/dollar-3-96x96.png",
     "/src/images/icons/dollar-3-120x120.png",
     "/src/images/icons/dollar-3-144x144.png",
@@ -67,55 +71,35 @@ self.addEventListener("activate", function(event) {
 })
 
 self.addEventListener("fetch", function(event) {
-    if (event.request.url.indexOf(url) > -1) {
-
-        event.respondWith(
-         caches.open(DYNAMIC_CACHE)  
-         .then(async function(cache) {
-            return fetch(event.request)
-            .then(function(response) {
-                cache.put(event.request, response.clone())
-                return response
-            })
-         })
-        )
-    } else if (isInArray(event.request.url, STATIC_FILES)) {
-        event.respondWith(
-            caches.match(event.request)
-        )
-    } else {
-        event.respondWith(
-            caches.match(event.request)
-            .then(function (response) {
-                if (response) {
-                    return response
-                } else {
-                    return fetch(event.request)
-                    .then(function (response) {
-                        return caches.open(DYNAMIC_CACHE)
-                        .then(function (cache) {
-                            cache.put(event.request.url, res.clone())
-                            return res
-                        })
-                    }).catch(function (err) {
-                        return caches.open(STATIC_CACHE)
-                        .then(function (cache) {
-                            if (event.request.headers.get("accept").includes("text/html")) {
-                                return cache.match("/offline.html")
-                            }
-                        })
+    if (!event.request.url.includes("chrome-extension")) {
+        return event.respondWith(
+             fetch(event.request).then(async function(response) {
+                if (!response) {
+                    await caches.match(event.request).then(function(response) {
+                        if (!response) {
+                            caches.match("/offline.html")
+                        }
+                        return response
                     })
+                } else {
+                    
+                    arrivedResponse = response
+                    return arrivedResponse
                 }
+            }).then(async function(data) {
+                return await caches.open(DYNAMIC_CACHE)
+                .then(async function(cache) {
+                    console.log("event fetch in service worker", event)
+                    if (!event.request.url.test(/chrome-extension/)) {
+                        await cache.put(event.request.url, data.clone())
+                    }
+                    if (data) {
+                        return data
+                    }
+                }).catch(() => {
+                    caches.match("/offline.html")
+                })
             })
         )
     }
 })
-
-function isInArray(string, arrayItemsToCach) {
-    for (var i = 0; i < arrayItemsToCach.length; i++) {
-        if (arrayItemsToCach[i] === string) {
-            return true
-        }
-        return false
-    }
-}

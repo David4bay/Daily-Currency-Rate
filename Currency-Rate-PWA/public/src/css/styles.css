@@ -19,6 +19,7 @@
     --text: #000;
     --theme-color2: #cfaf58;
     --theme-color: #DEB887;
+    --grey: #acacad;
 }
 
 *,*::before,*::after {
@@ -218,10 +219,14 @@ a {
     display: flex;
     white-space: nowrap;
     padding: 10px;
-    animation: scroll 20s linear infinite; 
+    animation: scroll 60s linear infinite; 
 }
 
 .carousel-item {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: Roboto;
     padding: 0 20px; 
     font-size: 1.1em;
@@ -231,8 +236,8 @@ a {
 
 .currencyTable__section {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     padding-top: 75px;
     margin-bottom: 100px;
@@ -246,6 +251,7 @@ a {
     display: flex;
     flex-direction: column;
     font-family: Roboto;
+    width: 300px;
     gap: 15px;
     text-align: center;
     margin: 50px;
@@ -268,10 +274,14 @@ thead {
     border-top-right-radius: 15px;
 }
 
+thead, tbody {
+    background-color: var(--custom-blue-emphasis);
+}
+
 .table__container {
     height: auto;
     overflow: visible;
-    width: 490px;
+    width: 580px;
     min-width: 150px;
     padding: 10px;
     border-radius: 15px;
@@ -313,7 +323,19 @@ thead {
 }
 
 .currencyData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 0px;
+}
+
+.currencyData:hover {
+    background-color: var(--custom-blue-emphasis);
+    color: var(--plain);
+}
+
+.upTick, .downTick {
+    transform: translateY(5px);
 }
 
 footer {
