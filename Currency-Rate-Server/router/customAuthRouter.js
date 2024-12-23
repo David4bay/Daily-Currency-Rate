@@ -18,6 +18,7 @@ customAuthRouter.get("/signon", async function(request, response) {
     const userExists = await User.findOne({ name: userEmailOrUsername })
 
     console.log("userExists", userExists)
+    
     if (!userExists) {
         response.statusCode = 200
         response.json({

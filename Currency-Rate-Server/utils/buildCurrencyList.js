@@ -5,7 +5,7 @@ function buildCurrencyList(defaultCurrency, currencySymbols) {
     currencySymbols.forEach((symbol) => {
         string += `${defaultCurrency}-${symbol},`
     })
-
+// reduced the length by 2 to remove the last ','.
     string = string.slice(0, string.length - 2)
     .replace(",USD-BAM", "")
     .replace(",USD-BTC", "")

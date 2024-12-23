@@ -244,7 +244,10 @@ a {
 }
 
 .article__intro {
+    display: block;
+    /* margin: 0 auto; */
     color: var(--custom-blue-emphasis);
+    text-align: center;
 }
 
 .article__content {
@@ -274,9 +277,9 @@ thead {
     border-top-right-radius: 15px;
 }
 
-thead, tbody {
+/* thead, tbody {
     background-color: var(--custom-blue-emphasis);
-}
+} */
 
 .table__container {
     height: auto;

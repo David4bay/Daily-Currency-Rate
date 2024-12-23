@@ -14,7 +14,7 @@ const sessionStore = MongoSession({
     connectionOptions: {
         serverSelectionTimeoutMS: 300000
     },
-    expires: 60 * 60 * 5
+    // expires: 60 * 60 * 30
 })
 
 passport.use(new GoogleStrategy({
@@ -56,7 +56,7 @@ oauthRoutes.use(
         cookie: {
             sameSite: false,
             secure: false,
-            maxAge: 1000 * 60 * 5
+            // maxAge: 1000 * 60 * 30
         }
     })
 )

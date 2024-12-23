@@ -1,10 +1,9 @@
+importScripts('/sw-helper.js')
 
-var arrivedResponse
-var STATIC_CACHE = "STATIC_CACHE_127"
-var DYNAMIC_CACHE = "DYNAMIC_CACHE_117"
-var url = `http://localhost:3001/api/v1/currencies`
+const STATIC_CACHE = "STATIC_CACHE_191"
+const DYNAMIC_CACHE = "DYNAMIC_CACHE_191"
 
-var STATIC_FILES = [
+const STATIC_FILES = [
     "/",
     "/manifest.json",
     "/offline.html",
@@ -29,77 +28,48 @@ var STATIC_FILES = [
     "/src/images/icons/dollar-3-180x180.png",
     "/src/fonts/Montserrat/static/Montserrat-Medium.ttf",
     "/src/fonts/Montserrat/static/Montserrat-MediumItalic.ttf",
-    "/src/fonts/Roboto/Roboto-Black.ttf ",
+    "/src/fonts/Roboto/Roboto-Black.ttf",
     "/src/fonts/Roboto/Roboto-ThinItalic.ttf",
 ]
 
-console.log("in service worker")
-
-self.addEventListener("install", function(event) {
-
-    console.log("[Service Worker Installing Service Worker ...", event)
+self.addEventListener("install", (event) => {
+    console.log("[Service Worker] Installing...")
     event.waitUntil(
-        caches.open(STATIC_CACHE).then(async function(cache) {
-        console.log("[Service Worker] Precaching App Shell") 
-           const urlsToCache = STATIC_FILES
-          for (const url of urlsToCache) {
-            try {
-                await cache.add(url)
-                console.log(`[Service Worker] Cached: ${url}`)
-            } catch (error) {
-                console.error(`[Service Worker] Failed to cache: ${url}`, error)
+        caches.open(STATIC_CACHE).then(async (cache) => {
+            console.log("[Service Worker] Precaching App Shell")
+            for (const url of STATIC_FILES) {
+                try {
+                    await cache.add(url)
+                    console.log(`[Service Worker] Cached: ${url}`)
+                } catch (error) {
+                    console.error(`[Service Worker] Failed to cache: ${url}`, error)
+                }
             }
-        }
         })
     )
 })
 
-self.addEventListener("activate", function(event) {
-    console.log("[Service Worker Activating Service Worker ...", event)
+self.addEventListener("activate", (event) => {
+    console.log("[Service Worker] Activating...")
     event.waitUntil(
-        caches.keys()
-        .then(function(keyList) {
-            return Promise.all(keyList.map(function(key) {
-                if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE) {
-                    console.log("[Service Worker] Removing old cache.", key)
-                    return caches.delete(key)
-                }
-            }))
-        })
+        caches.keys().then((keys) => 
+            Promise.all(
+                keys.map((key) => {
+                    if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE) {
+                        console.log("[Service Worker] Removing old cache:", key)
+                        return caches.delete(key)
+                    }
+                })
+            )
+        )
     )
     return self.clients.claim()
 })
 
-self.addEventListener("fetch", function(event) {
-    if (!event.request.url.includes("chrome-extension")) {
-        return event.respondWith(
-             fetch(event.request).then(async function(response) {
-                if (!response) {
-                    await caches.match(event.request).then(function(response) {
-                        if (!response) {
-                            caches.match("/offline.html")
-                        }
-                        return response
-                    })
-                } else {
-                    
-                    arrivedResponse = response
-                    return arrivedResponse
-                }
-            }).then(async function(data) {
-                return await caches.open(DYNAMIC_CACHE)
-                .then(async function(cache) {
-                    console.log("event fetch in service worker", event)
-                    if (!event.request.url.test(/chrome-extension/)) {
-                        await cache.put(event.request.url, data.clone())
-                    }
-                    if (data) {
-                        return data
-                    }
-                }).catch(() => {
-                    caches.match("/offline.html")
-                })
-            })
-        )
-    }
-})
+// self.addEventListener("fetch", (event) => {
+    // if (!event.request.url.includes("chrome-extension")) {
+    //     event.respondWith(
+    
+    //     )
+    // }
+// })

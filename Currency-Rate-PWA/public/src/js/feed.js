@@ -32,19 +32,21 @@ function openInstallAppModal() {
 fetch(dummyServer).then(function(response) {
     return response.json()
 }).then(function(fetchResponse) {
-    let reformattedCurrency = Object.keys(fetchResponse)
+
+    let reformattedCurrency = Object.values(fetchResponse)
     let articleBaseCurrency = reformattedCurrency[0].code
     let carouselCurrencyData = Object.values(fetchResponse)
     let exchangeRateCurrencyData = Object.values(fetchResponse)
-    console.log("articleBaseCurrency", articleBaseCurrency, "reformattedCurrency", reformattedCurrency)
+
     data = Array.from(exchangeRateCurrencyData)
-    console.log("articleBaseCurrency", articleBaseCurrency)
     articleIntro.textContent += `${articleBaseCurrency}`
 
     if (reformattedCurrency.length > 1 && exchangeRateCurrencyData.length > 1) {
         createCarouselOnHomepage(carouselCurrencyData)
         createExchangeRateTable(exchangeRateCurrencyData)
     }
+}).catch(function(error) {
+    console.log("error fetching from feed.js", error)
 })
 
 function createCarouselOnHomepage(currencyPayload) {
@@ -104,9 +106,7 @@ function createExchangeRateTable(currencyPayload) {
     
             if (indexOfCurrencyData === 14) {
                 let borderStyle = getComputedStyle(document.documentElement).getPropertyValue("--text")
-                console.log("borderStyle", borderStyle)
                 tableRow.style.borderBottom = `1px solid ${borderStyle}`
-                console.log("tableRow.style.borderLeftBottomRadius", tableRow.style.borderLeftBottomRadius)
             }
     
             carouseTableContent.appendChild(tableRow)

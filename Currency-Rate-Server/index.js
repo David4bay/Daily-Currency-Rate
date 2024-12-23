@@ -8,7 +8,7 @@ const customAuthRouter = require("./router/customAuthRouter")
 const currencyRouter = require("./router/currencyRouter")
 
 app.use(cors({
-    origin: "http://127.0.0.1:8080"
+    origin: "*"
 }))
 
 app.use(express.json())
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(customAuthRouter)
 
     app.use(authRouter)
-    
+
     app.use("/api/v1", currencyRouter)
 
     app.get("/home", function(_, response) {
