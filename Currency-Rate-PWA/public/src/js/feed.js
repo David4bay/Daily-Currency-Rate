@@ -6,9 +6,6 @@ var appDownloadIcon = document.getElementById("downloadApplication")
 var carousel = document.querySelector(".carousel")
 var carouseTableContent = document.querySelector(".currencyTable__content")
 var articleIntro = document.querySelector(".article__intro")
-var googleSignin = document.getElementById("googleSignOn")
-var githubSignin = document.getElementById("githubSignOn")
-var customSignin = document.getElementById("customSignOn")
 
 var platform 
 
@@ -116,34 +113,4 @@ function createExchangeRateTable(currencyPayload) {
             carouseTableContent.appendChild(tableRow)
         }
         })
-}
-
-googleSignin.addEventListener("submit", handleSignin)
-
-githubSignin.addEventListener("submit", handleSignin)
-
-customSignOn.addEventListener("submit", handleSignin)
-
-function handleSignin(e) {
-    e.preventDefault()
-    console.log("id of button, using e.target", e?.target?.id)
-    let signinType = e.target.id
-    let { email, password } = customSignOn.elements
-    /*
-    customSignOn
-    googleSignOn
-    githubSignOn
-    */
-   console.log("email", email, "password", password)
-    switch(true) {
-        case signinType === "customSignOn":
-        customLogin(email, password)
-        break
-        default:
-            throw "Could not resolve sign in organization."
-    }
-}
-
-function customLogin() {
-
 }

@@ -2,8 +2,11 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/userModel")
 const reviewPassword = require("../utils/verifyPassword")
 const customAuthRouter = require("express").Router()
+const cors = require("cors")
 
-customAuthRouter.get("/signon", async function(request, response) {
+customAuthRouter.use(cors())
+
+customAuthRouter.post("/signon", async function(request, response) {
     const credentials = request.body
     const { userEmailOrUsername, enteredPassword } = credentials
 
