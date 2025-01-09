@@ -1,7 +1,7 @@
 importScripts('/sw-helper.js')
 
-const STATIC_CACHE = "STATIC_CACHE_191"
-const DYNAMIC_CACHE = "DYNAMIC_CACHE_191"
+const STATIC_CACHE = "STATIC_CACHE_194"
+const DYNAMIC_CACHE = "DYNAMIC_CACHE_194"
 
 const STATIC_FILES = [
     "/",

@@ -30,9 +30,11 @@
 
 body {
     font-family: Monterrat, Roboto;
+    width: 100%;
     min-height: 100vh;
     color: var(--text);
 }
+
 
  .article__content > h2 {
     color: var(--exclaim);
@@ -55,7 +57,13 @@ nav {
 }
 
 a {
+    text-decoration: none;
     color: var(--exclaim);
+}
+
+
+a.link {
+    color: var(--text);
 }
 
 .navmenu__options {
@@ -250,6 +258,11 @@ a {
     text-align: center;
 }
 
+.description__section {
+    display: flex;
+    flex-direction: row;
+}
+
 .article__content {
     display: flex;
     flex-direction: column;
@@ -369,4 +382,156 @@ footer {
     to {
         transform: translateX(-100%); 
     }
+}
+
+@media (max-width: 1000px) {
+
+    .currencyTable__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 75px;
+        margin-bottom: 100px;
+    }
+
+    .container__wrapper {
+        margin-top: 100px;
+    }
+
+    .description__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 17px;
+        margin: 0px 20px;
+    }
+
+    .article__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        min-width: 100%;
+        line-height: 1.7;
+        letter-spacing: 1px;
+        margin: 20px auto;
+    }
+    
+    .article__content__heading {
+        margin-top: -15px;
+        margin-bottom: -15px;
+    }
+
+    .features__container {
+        padding-top: 10px;
+    }
+
+    .features__subheading {
+        padding-bottom: 5px;
+    }
+
+}
+
+/*
+signinOrRegister Styles
+*/
+
+.signin__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    background-color: var(--custom-blue);
+    border-radius: 15px;
+}
+
+#customSignOn {
+    display: flex;
+    flex-direction: column;
+    width: 317px;
+    margin-bottom: 30px;
+}
+
+.oauthsignin__container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    gap: 15px;
+}
+
+.google__signin:hover, 
+.github__signin:hover, 
+.custom__signin:hover {
+    cursor: pointer;
+    background-color: var(--text);
+    color: var(--plain);
+}
+
+.google__signin, .github__signin {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--plain);
+    color: var(--text);
+}
+
+.custom__signin {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+    padding: 5px;
+    margin-top: 8px;
+    border-radius: 5px;
+    background-color: var(--plain);
+    color: var(--text);
+}
+
+/* .github__signin {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--plain);
+    color: var(--text);
+} */
+
+label, input {
+    width: 100%;
+}
+
+label {
+    color: var(--theme-color2);
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+input {
+    padding: 8px 5px;
+    margin: 12px 0px 10px 0px;
+    border-radius: 5px;
+    border: none;
+}
+
+input::placeholder {
+    padding-left: 5px;
 }
