@@ -2,51 +2,59 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/userModel")
 const reviewPassword = require("../utils/verifyPassword")
 const customAuthRouter = require("express").Router()
-const cors = require("cors")
-
-customAuthRouter.use(cors())
 
 customAuthRouter.post("/signon", async function(request, response) {
     const credentials = request.body
     const { userEmailOrUsername, enteredPassword } = credentials
-
-    if (!userEmailOrUsername || ! hashedPassword) {
+    try {
+        console.log("credentials", credentials)
+        if (!userEmailOrUsername || !enteredPassword) {
+            response.statusCode = 400
+            response.json({
+                error: `${!userEmailOrUsername && !enteredPassword ? "No credentials provided." : !enteredPassword ? "No password provided." : "No username/info provided."}`
+            })
+            return
+        }
+    
+        const userExists = await User.findOne({ name: userEmailOrUsername })
+    
+        console.log("userExists", userExists)
+        
+        if (!userExists) {
+            response.statusCode = 200
+            response.json({
+                error: "No user found."
+            })
+            return
+        }
+    
+        let userPassword = userExists.hashedPassword
+    
+        let validatePassword = reviewPassword(enteredPassword, userExists.salt, userPassword)
+    
+        if (!validatePassword) {
+            response.statusCode = 401
+            response.json({
+                error: "Not authorized to sign in."
+            })
+            return
+        }
+    
+        const token = jwt.sign(userExists, process.env.JWT_TOKEN)
+    
+        response.status(200).json(token)
+        return
+    } catch (error) {
+        console.log("error", error)
         response.statusCode = 400
         response.json({
-            error: `${!userEmailOrUsername && !enteredPassword ? "No credentials provided." : !enteredPassword ? "No password provided." : "No username/info provided."}`
+            error
         })
         return
     }
-
-    const userExists = await User.findOne({ name: userEmailOrUsername })
-
-    console.log("userExists", userExists)
-    
-    if (!userExists) {
-        response.statusCode = 200
-        response.json({
-            error: "No user found."
-        })
-        return
-    }
-
-    let userPassword = userExists.hashedPassword
-
-    let validatePassword = reviewPassword(enteredPassword, userExists.salt, userPassword)
-
-    if (!validatePassword) {
-        response.statusCode = 401
-        response.json({
-            error: "Not authorized to sign in."
-        })
-        return
-    }
-
-    const token = jwt.sign(userExists, process.env.JWT_TOKEN)
-
-    response.status(200).json(token)
-    return
+   
 })
+
 
 customAuthRouter.post("/register", async function(request, response) {
 

@@ -1,22 +1,34 @@
 const axios = require("axios")
 const store = require("../store/store")
 const buildCurrencyList = require("../utils/buildCurrencyList")
+const authRouter = require("../router/authRouter")
+const customAuthRouter = require("../router/customAuthRouter")
 const currencyRouter = require("express").Router()
 const currencyNameAndSymbols = require("../data/currencyList")
 
+currencyRouter.use(customAuthRouter)
+
+currencyRouter.use(authRouter)
+
 currencyRouter.get("/currencies", async function(request, response) {
+
     let defaultCurrency = request.body.defaultCurrency || "USD"
+
     console.log("currency List", currencyNameAndSymbols)
+
     let currencySymbols = currencyNameAndSymbols.currencySymbols.filter((currencySymbol) => currencySymbol !== defaultCurrency)
     let currencyFetchInfo = buildCurrencyList(defaultCurrency, currencySymbols)
+
     console.log("currencyFetchInfo", currencyFetchInfo)
+
     try {
-    axios.get(`${store.CURRENCIES_API}/${currencyFetchInfo}`).then((currencyPayloadInfo) => {
+
+        return axios.get(`${store.CURRENCIES_API}/${currencyFetchInfo}`).then((currencyPayloadInfo) => {
         console.log("currencyPayloadInfo", currencyPayloadInfo)
         let currencyPayload = currencyPayloadInfo.data
         return response.status(200).json(currencyPayload)
+        
     })
-    return
     } catch (error) {
         response.statusCode = 400
         response.json({

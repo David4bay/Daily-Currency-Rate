@@ -1,8 +1,8 @@
 /* Reminder to trim fonts when complete */
 @font-face {
     font-family: 'Monterrat';
-    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf')  format('truetype');
-    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf')  format('truetype');
+    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+    src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -436,7 +436,7 @@ footer {
 signinOrRegister Styles
 */
 
-.signin__wrapper {
+.signin__wrapper, .registration__wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -453,6 +453,16 @@ signinOrRegister Styles
     width: 500px;
     height: 500px;
     background-color: var(--custom-blue);
+    border-radius: 15px;
+}
+
+.registration__container {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-self: flex-end;
+    margin-right: 200px;
+    /* background-color: var(--custom-blue); */
     border-radius: 15px;
 }
 

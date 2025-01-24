@@ -19,19 +19,24 @@ app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
 
 if (process.env.NODE_ENV === "development") {
 
-    app.use(customAuthRouter)
+app.use(customAuthRouter)
 
-    app.use(authRouter)
+app.use(authRouter)
 
-    app.use("/api/v1", currencyRouter)
+app.use("/api/v1", currencyRouter)
 
-    app.get("/home", function(_, response) {
+app.get("/home", function(_, response) {
         response.status(200).json({ message: "You're home buddy. "})
     })
 
-    app.get("/login", function(_, response) {
+app.get("/login", function(_, response) {
         response.status(200).json({ message: "Login bro. "})
     })
+
 }
+
+app.all("*", function(_, response) {
+    response.status(404).json({ error: "Resource not found."})
+})
 
 module.exports = app
