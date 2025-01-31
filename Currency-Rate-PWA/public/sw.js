@@ -7,12 +7,12 @@ const STATIC_FILES = [
     "/",
     "/manifest.json",
     "/offline.html",
-    "/index.html",
-    "/src/js/app.js",
+    "/index.html",   
+    // "/src/js/app.js", 
     "/src/js/fetch.js",
-    "/src/js/feed.js",
+    // "/src/js/feed.js",
     "/src/js/idb.js",
-    "/src/js/highCharts.js",
+    // "/src/js/highCharts.js",
     "/src/js/promise.js",
     "/src/js/polyfill.js",
     "/src/css/styles.css",
@@ -66,10 +66,27 @@ self.addEventListener("activate", (event) => {
     return self.clients.claim()
 })
 
-// self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", (event) => {
     // if (!event.request.url.includes("chrome-extension")) {
     //     event.respondWith(
     
     //     )
     // }
-// })
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            if (response) {
+                return response
+            } else {
+                return fetch(event.request).then((res) => {
+                    return caches.open(DYNAMIC_CACHE).then((cache) => {
+                        cache.put(event.request.url, res.clone())
+                        return res
+                    })
+                }).catch((error) => {
+                    console.log("[Service Worker] Loading offline page.")
+                    return caches.match("/offline.html")
+                })
+            }
+        })
+    )
+})
