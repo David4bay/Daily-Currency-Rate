@@ -8,8 +8,8 @@ const STATIC_FILES = [
     "/manifest.json",
     "/offline.html",
     "/index.html",   
-    // "/src/js/app.js", 
-    "/src/js/fetch.js",
+    "/src/js/app.js", 
+    // "/src/js/fetch.js",
     // "/src/js/feed.js",
     "/src/js/idb.js",
     // "/src/js/highCharts.js",
@@ -72,21 +72,27 @@ self.addEventListener("fetch", (event) => {
     
     //     )
     // }
-    event.respondWith(
+    return event.respondWith(
         caches.match(event.request).then((response) => {
             if (response) {
                 return response
             } else {
-                return fetch(event.request).then((res) => {
+                return fetch(event.request).then(function(res) {
+                    console.log("[Service Worker] Dynamic fetch response.", res)
                     return caches.open(DYNAMIC_CACHE).then((cache) => {
+                        if (event.request.url.indexOf("chrome-extension") === -1) {
                         cache.put(event.request.url, res.clone())
                         return res
+                        }
                     })
-                }).catch((error) => {
-                    console.log("[Service Worker] Loading offline page.")
+                }).catch(function(_) {
+                    console.log("[Service Worker] Page not in Cache. Loading offline page.")
                     return caches.match("/offline.html")
                 })
             }
+        }).catch(function(_) {
+            console.log("[Service Worker] No request match. Loading offline page.")
+            return caches.match("/offline.html")
         })
     )
 })
