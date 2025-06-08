@@ -4,7 +4,7 @@ var data
 
 var appDownloadIcon = document.getElementById("downloadApplication")
 var carousel = document.querySelector(".carousel")
-var carouseTableContent = document.querySelector(".currencyTable__content")
+var carouselTableContent = document.querySelector(".currencyTable__content")
 var articleIntro = document.querySelector(".article__intro")
 
 var platform 
@@ -118,7 +118,7 @@ function createExchangeRateTable(currencyPayload) {
                 tableRow.style.borderBottom = `1px solid ${borderStyle}`
             }
     
-            carouseTableContent.appendChild(tableRow)
+            carouselTableContent.appendChild(tableRow)
         }
         })
 }

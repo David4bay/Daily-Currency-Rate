@@ -13,15 +13,6 @@ mongoose.connect(`mongodb+srv://${store.DBUsername}:${store.DBPassword}@${store.
 
 const app = require("./index.js")
 
-// app.use(function(error, _, response, _) {
-//     if (error) {
-//         response.statusCode = 500
-//         response.json({
-//             error: `Operation failed. ${error}`
-//         })
-//     }
-// })
-
 app.listen(PORT, function() {
     console.log(`Server started on PORT ${PORT}.`)
 })

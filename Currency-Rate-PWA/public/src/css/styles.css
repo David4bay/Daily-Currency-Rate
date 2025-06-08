@@ -15,7 +15,7 @@
     --exclaim: #e2be5c;
     --custom-blue: #3f46afb9;
     --custom-blue-emphasis: #3f46af;
-    --plain: #ffffff;
+    --plain: #f8f8f8f8;
     --text: #000;
     --theme-color2: #cfaf58;
     --theme-color: #DEB887;
@@ -31,6 +31,7 @@
 body {
     font-family: Monterrat, Roboto;
     width: 100%;
+    background-color: var(--plain);
     min-height: 100vh;
     color: var(--text);
 }

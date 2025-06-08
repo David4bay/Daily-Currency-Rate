@@ -5,6 +5,7 @@ const authRouter = require("../router/authRouter")
 const customAuthRouter = require("../router/customAuthRouter")
 const currencyRouter = require("express").Router()
 const currencyNameAndSymbols = require("../data/currencyList")
+const { default: formatCurrencyData } = require("../utils/formatCurrencyData")
 
 currencyRouter.use(customAuthRouter)
 
@@ -25,7 +26,8 @@ currencyRouter.get("/currencies", async function(request, response) {
 
         return axios.get(`${store.CURRENCIES_API}/${currencyFetchInfo}`).then((currencyPayloadInfo) => {
         console.log("currencyPayloadInfo", currencyPayloadInfo)
-        let currencyPayload = currencyPayloadInfo.data
+        let currencyPayload = formatCurrencyData(currencyPayloadInfo.data)
+        console.log("currencyPayload", currencyPayload)
         return response.status(200).json(currencyPayload)
         
     })

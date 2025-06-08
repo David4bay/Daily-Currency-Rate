@@ -4,8 +4,11 @@ const reviewPassword = require("../utils/verifyPassword")
 const customAuthRouter = require("express").Router()
 
 customAuthRouter.post("/signon", async function(request, response) {
+    
     const credentials = request.body
+
     const { userEmailOrUsername, enteredPassword } = credentials
+
     try {
         console.log("credentials", credentials)
         if (!userEmailOrUsername || !enteredPassword) {
@@ -52,7 +55,6 @@ customAuthRouter.post("/signon", async function(request, response) {
         })
         return
     }
-   
 })
 
 

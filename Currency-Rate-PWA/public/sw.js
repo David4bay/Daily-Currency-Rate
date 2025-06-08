@@ -66,10 +66,3 @@ self.addEventListener("activate", (event) => {
     return self.clients.claim()
 })
 
-// self.addEventListener("fetch", (event) => {
-    // if (!event.request.url.includes("chrome-extension")) {
-    //     event.respondWith(
-    
-    //     )
-    // }
-// })
