@@ -74,9 +74,8 @@ currencyRouter.get("/graph", async function(request, response) {
 
     try {
         let currencyPayload = await axios.get(`${store.CURRENCIES_CHART_API}/${defaultCurrency}-${compareToCurrency}/${numberOfDays}`)
-        let currencyGraphList = currencyPayload.data.map((currencyData) => { return { pctChange: Number(currencyData.pctChange), timestamp: Number(currencyData.timestamp) * 1000 } })
-        console.log("currencyGraphList", currencyGraphList)
-        response.status(200).json(currencyGraphList)
+        let currencyGraphList = currencyPayload.data.map((currencyData) => { return { pctChange: Number((Number(currencyData.pctChange)).toFixed(2)), timestamp: Number(currencyData.timestamp) * 1000 } })
+        response.status(200).json(currencyGraphList)        
         return
     } catch (error) {
         response.statusCode = 404
